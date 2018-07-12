@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Template } from "devextreme-react/core/template";
 
-import { Button } from "devextreme-react/ui/button";
 import { Toolbar } from "devextreme-react/ui/toolbar";
 import { TreeView } from "devextreme-react/ui/tree-view";
 
