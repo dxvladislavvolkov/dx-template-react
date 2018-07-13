@@ -16,10 +16,15 @@ class App extends Component {
             menuVisible: true,
             isUserAuthorized: false,
             showLoginPopup: false,
+            login: "",
+            password: "",
             userLogin: null
         };
         this.clickOnMenuButton = this.clickOnMenuButton.bind(this);
         this.showMenu = this.showMenu.bind(this);
+        this.loginClick = this.loginClick.bind(this);
+        this.loginChange = this.loginChange.bind(this);
+        this.passwordChange = this.passwordChange.bind(this);
     }
 
     render() {
@@ -43,6 +48,21 @@ class App extends Component {
     }
     onItemSelectionChanged(event) {
         // navigation
+    }
+    
+    loginClick(args) {
+        if (!args.validationGroup.validate().isValid)
+            return;
+
+        this.setState({ userLogin: args.login });
+        this.setState({ showLoginPopup: false });
+        this.setState({ isUserAuthorized: true });
+    }
+    loginChange(e) {
+        this.setState({ login: e.value });
+    }
+    passwordChange(e) {
+        this.setState({ password :e.value });
     }
 }
 
