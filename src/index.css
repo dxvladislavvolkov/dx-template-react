@@ -18,3 +18,14 @@ html, body, .App, #root {
   top: 0;
   bottom: 0;
 }
+
+.image-container {
+  float: left;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 10px;
+  height: 20px;
+}
+.user-image {
+  width: 20px;
+}
