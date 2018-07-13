@@ -4,12 +4,11 @@ import './App.css';
 import "devextreme/dist/css/dx.common.css";
 import "devextreme/dist/css/dx.light.compact.css";
 
-import { Template } from "devextreme-react/core/template";
-
 import { SlideOutView } from "devextreme-react/ui/slide-out-view";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import NavigationMenu from "./components/NavigationMenu";
+import Header from "./components/Header";
 
 import createHistory from "history/createBrowserHistory";
 
@@ -33,11 +32,15 @@ function renderViewTemplate() {
     );
 }
 
+
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            menuVisible: true
+            menuVisible: true,
+            isUserAuthorized: false,
+            showLoginPopup: false,
+            userLogin: null
         };
         this.clickOnMenuButton = this.clickOnMenuButton.bind(this);
         this.showMenu = this.showMenu.bind(this);
@@ -50,7 +53,7 @@ class App extends Component {
                 swipeEnabled={true}
                 menuVisible={this.state.menuVisible}
                 menuRender={NavigationMenu.bind(this)}
-                contentRender={renderViewTemplate}
+                contentRender={Header.bind(this)}
                 onOptionChanged={(args) => args.name === "menuVisible" && this.setState({ menuVisible: args.value })}
             ></SlideOutView>
         </div>
