@@ -6,7 +6,7 @@ import { Button } from "devextreme-react/ui/button";
 import { Toolbar } from "devextreme-react/ui/toolbar";
 import { TreeView } from "devextreme-react/ui/tree-view";
 
-function renderMenuTemplate() {
+function NavigationMenu() {
     const items = [{ 
         location: "before",
         locateInMenu: "auto",
@@ -49,4 +49,4 @@ function renderMenuTemplate() {
     );
 }
 
-export default renderMenuTemplate;
+export default NavigationMenu;

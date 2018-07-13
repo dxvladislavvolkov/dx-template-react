@@ -7,13 +7,28 @@ import "devextreme/dist/css/dx.light.compact.css";
 import { Template } from "devextreme-react/core/template";
 
 import { SlideOutView } from "devextreme-react/ui/slide-out-view";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import renderMenuTemplate from "./renderMenuTemplate"
+import NavigationMenu from "./components/NavigationMenu";
+
+import createHistory from "history/createBrowserHistory";
+
+import Profile from './views/Profile';
+import Settings from './views/Settings';
+import About from './views/About';
+
+const newHistory = createHistory(); 
 
 function renderViewTemplate() {
     return (
         <React.Fragment>
-            <p>View content</p>
+            <Router history={newHistory}>
+                <div>
+                    <Route path="/profile" component={Profile}></Route>
+                    <Route path="/settings" component={Settings}></Route>
+                    <Route path="/about" component={About}></Route>
+                </div>
+            </Router>
         </React.Fragment>
     );
 }
@@ -34,7 +49,7 @@ class App extends Component {
             <SlideOutView class="slide-layout"
                 swipeEnabled={true}
                 menuVisible={this.state.menuVisible}
-                menuRender={renderMenuTemplate.bind(this)}
+                menuRender={NavigationMenu.bind(this)}
                 contentRender={renderViewTemplate}
                 onOptionChanged={(args) => args.name === "menuVisible" && this.setState({ menuVisible: args.value })}
             ></SlideOutView>
@@ -48,7 +63,7 @@ class App extends Component {
         this.clickOnMenuButton(this.state.menuVisible);
     }
     onItemSelectionChanged(event) {
-        // navigation
+        newHistory.push("/settings")
     }
 }
 
