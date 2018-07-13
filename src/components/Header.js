@@ -5,6 +5,8 @@ import { Template } from "devextreme-react/core/template";
 import { Toolbar } from "devextreme-react/ui/toolbar";
 import { Popup } from "devextreme-react/ui/popup";
 
+import Login from "./Login"
+
 class Header extends Component {
 
     constructor(props) {
@@ -36,6 +38,11 @@ class Header extends Component {
         this.setState({ showLoginPopup: true });
     }
 
+    onUserAuthorized(value) {
+        this.setState({ isUserAuthorized: value});
+        this.setState({ showLoginPopup: false });
+    }
+
     render() {
         return (
             <div>
@@ -58,7 +65,7 @@ class Header extends Component {
                     title="Login"
                     height="auto"
                     width="300"
-                    contentRender={() => <div>Login</div>}
+                    contentRender={() => <Login onUserAuthorized={this.onUserAuthorized.bind(this)} />}
                     onHiding={() => { this.setState({ showLoginPopup: false }); }}
                 ></Popup>
             </div>
