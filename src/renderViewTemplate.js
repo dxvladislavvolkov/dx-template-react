@@ -5,6 +5,8 @@ import { Template } from "devextreme-react/core/template";
 import { Toolbar } from "devextreme-react/ui/toolbar";
 import { Popup } from "devextreme-react/ui/popup";
 
+import renderLoginTemplate from "./renderLoginTemplate";
+
 function renderViewTemplate() {
     const items = [{
         location: "after",
@@ -48,7 +50,7 @@ function renderViewTemplate() {
                 title="Login"
                 height="auto"
                 width="300"
-                contentRender={() => <div>Login</div>}
+                contentRender={renderLoginTemplate.bind(this)}
                 onHiding={() => { this.setState({ showLoginPopup: false }); }}
             ></Popup>
         </React.Fragment>
