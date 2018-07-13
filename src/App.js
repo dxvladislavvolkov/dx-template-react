@@ -21,6 +21,7 @@ const newHistory = createHistory();
 function renderViewTemplate() {
     return (
         <React.Fragment>
+            <Header />
             <Router history={newHistory}>
                 <div>
                     <Route path="/profile" component={Profile}></Route>
@@ -37,10 +38,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            menuVisible: true,
-            isUserAuthorized: false,
-            showLoginPopup: false,
-            userLogin: null
+            menuVisible: true
         };
         this.clickOnMenuButton = this.clickOnMenuButton.bind(this);
         this.showMenu = this.showMenu.bind(this);
@@ -53,7 +51,7 @@ class App extends Component {
                 swipeEnabled={true}
                 menuVisible={this.state.menuVisible}
                 menuRender={NavigationMenu.bind(this)}
-                contentRender={Header.bind(this)}
+                contentRender={renderViewTemplate}
                 onOptionChanged={(args) => args.name === "menuVisible" && this.setState({ menuVisible: args.value })}
             ></SlideOutView>
         </div>
