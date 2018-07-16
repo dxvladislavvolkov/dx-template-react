@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { Template } from "devextreme-react/core/template";
 
 import { Toolbar } from "devextreme-react/ui/toolbar";
 import { TreeView } from "devextreme-react/ui/tree-view";
 
-function NavigationMenu() {
-    const items = [{ 
+import { withRouter } from 'react-router-dom';
+
+class NavigationMenu extends Component {
+    items = [{ 
         location: "before",
         locateInMenu: "auto",
         widget: "dxButton",
@@ -19,7 +21,7 @@ function NavigationMenu() {
         // locateInMenu: "auto",
         template: "menuTextTemplate"
     }];
-    const menuItems = [{ 
+    menuItems = [{ 
         text: "Home",
         expanded: true,
         icon: "home",
@@ -32,20 +34,28 @@ function NavigationMenu() {
         icon: "info",
         path: "about"
     }];
-
-    return (
-        <React.Fragment>
-            <Toolbar items={items}>
-                <Template name="menuTextTemplate" render={() => <h4>Demo</h4>}/>
-            </Toolbar>
-            <TreeView class="navigation-treeview" 
-                items={menuItems}
-                onItemClick={this.onItemSelectionChanged}
-                selectByClick={true}
-                selectionMode="single"
-            ></TreeView>
-        </React.Fragment>
-    );
+    
+    onItemSelectionChanged(e) {
+        let path = e.itemData.path;
+        if(path) {
+            this.props.history.push("/" + path);
+        }
+    }
+    render() {
+        return (
+            <React.Fragment>
+                <Toolbar items={this.items}>
+                    <Template name="menuTextTemplate" render={() => <h4>Demo</h4>}/>
+                </Toolbar>
+                <TreeView class="navigation-treeview" 
+                    items={this.menuItems}
+                    onItemClick={this.onItemSelectionChanged.bind(this)}
+                    selectByClick={true}
+                    selectionMode="single"
+                ></TreeView>
+            </React.Fragment>
+        );
+    }
 }
 
-export default NavigationMenu;
+export default withRouter(NavigationMenu);

@@ -1,38 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
 import "devextreme/dist/css/dx.common.css";
 import "devextreme/dist/css/dx.light.compact.css";
 
 import { SlideOutView } from "devextreme-react/ui/slide-out-view";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import NavigationMenu from "./components/NavigationMenu";
-import Header from "./components/Header";
-
-import createHistory from "history/createBrowserHistory";
-
-import Profile from './views/Profile';
-import Settings from './views/Settings';
-import About from './views/About';
-
-const newHistory = createHistory(); 
-
-function renderViewTemplate() {
-    return (
-        <React.Fragment>
-            <Header />
-            <Router history={newHistory}>
-                <div>
-                    <Route path="/profile" component={Profile}></Route>
-                    <Route path="/settings" component={Settings}></Route>
-                    <Route path="/about" component={About}></Route>
-                </div>
-            </Router>
-        </React.Fragment>
-    );
-}
-
+import PageContent from "./components/PageContent"
 
 class App extends Component {
     constructor(props) {
@@ -47,13 +23,15 @@ class App extends Component {
     render() {
         return (
         <div className="App">
-            <SlideOutView class="slide-layout"
-                swipeEnabled={true}
-                menuVisible={this.state.menuVisible}
-                menuRender={NavigationMenu.bind(this)}
-                contentRender={renderViewTemplate}
-                onOptionChanged={(args) => args.name === "menuVisible" && this.setState({ menuVisible: args.value })}
-            ></SlideOutView>
+            <Router>
+                <SlideOutView class="slide-layout"
+                    swipeEnabled={true}
+                    menuVisible={this.state.menuVisible}
+                    menuRender={() => <NavigationMenu />}
+                    contentRender={() => <PageContent />}
+                    onOptionChanged={(args) => args.name === "menuVisible" && this.setState({ menuVisible: args.value })}
+                ></SlideOutView>
+            </Router>
         </div>
         );
     }
@@ -62,9 +40,6 @@ class App extends Component {
     }  
     showMenu() {
         this.clickOnMenuButton(this.state.menuVisible);
-    }
-    onItemSelectionChanged(event) {
-        newHistory.push("/settings")
     }
 }
 
