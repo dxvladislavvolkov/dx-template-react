@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import { Template } from "devextreme-react/core/template";
+import { Template } from 'devextreme-react/core/template';
 
-import { Toolbar } from "devextreme-react/ui/toolbar";
-import { Popup } from "devextreme-react/ui/popup";
+import { Toolbar } from 'devextreme-react/ui/toolbar';
+import { Popup } from 'devextreme-react/ui/popup';
 
-import Login from "./Login"
+import Login from './Login'
 
 class Header extends Component {
 
@@ -17,20 +17,20 @@ class Header extends Component {
             userLogin: null
         };
         this.items = [{
-            location: "after",
-            locateInMenu: "auto",
-            widget: "dxButton",
+            location: 'after',
+            locateInMenu: 'auto',
+            widget: 'dxButton',
             visible: !this.state.isUserAuthorized,
             options: {
-                icon: "user",
-                text: "Login",
+                icon: 'user',
+                text: 'Login',
                 onClick: this.onShowLoginPopup.bind(this)
             }
         }, {
-            location: "after",
-            locateInMenu: "auto",
+            location: 'after',
+            locateInMenu: 'auto',
             visible: this.state.isUserAuthorized,
-            template: "imageTemplate"
+            template: 'imageTemplate'
         }];
     }
 
@@ -47,12 +47,12 @@ class Header extends Component {
         return (
             <div>
                 <Toolbar items={this.items}>
-                    <Template name="imageTemplate" 
+                    <Template name='imageTemplate' 
                         render={() => {
                             return(
                                 <div>
-                                    <div className="image-container">
-                                        <img className="user-image" src="https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/employees/01.png"/>
+                                    <div className='image-container'>
+                                        <img className='user-image' src='https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/employees/01.png'/>
                                     </div>
                                     {this.userLogin}
                                 </div>
@@ -62,9 +62,9 @@ class Header extends Component {
                 </Toolbar>
                 <Popup
                     visible={this.state.showLoginPopup}
-                    title="Login"
-                    height="auto"
-                    width="300"
+                    title='Login'
+                    height='auto'
+                    width='300'
                     contentRender={() => <Login onUserAuthorized={this.onUserAuthorized.bind(this)} />}
                     onHiding={() => { this.setState({ showLoginPopup: false }); }}
                 ></Popup>

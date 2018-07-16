@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 
-import { Button } from "devextreme-react/ui/button";
-import { ValidationGroup } from "devextreme-react/ui/validation-group";
-import { Validator } from "devextreme-react/ui/validator";
-import { TextBox } from "devextreme-react/ui/text-box";
+import { Button } from 'devextreme-react/ui/button';
+import { ValidationGroup } from 'devextreme-react/ui/validation-group';
+import { Validator } from 'devextreme-react/ui/validator';
+import { TextBox } from 'devextreme-react/ui/text-box';
 
 class Login  extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            login: "",
-            password: "",
+            login: '',
+            password: '',
             userLogin: null
         };
         this.validationRules = {
             login: [
-                { type: "email", message: "Login is invalid." },
-                { type: "required", message: "Login is required." }
+                { type: 'email', message: 'Login is invalid.' },
+                { type: 'required', message: 'Login is required.' }
             ],
             password: [
-                { type: "required", message: "Password is required." }
+                { type: 'required', message: 'Password is required.' }
             ]
         };
     }
@@ -41,23 +41,21 @@ class Login  extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <ValidationGroup className="dx-fieldset">
-                    <div className="dx-field">
-                        <TextBox value={this.state.login} placeholder="Login" onValueChanged={this.loginChange.bind(this)}>
-                            <Validator validationRules={this.validationRules.login} />
-                        </TextBox>
-                    </div>
-                    <div className="dx-field">
-                        <TextBox mode="password" value={this.state.password} placeholder="Password" onValueChanged={this.passwordChange.bind(this)}>
-                            <Validator validationRules={this.validationRules.password} />
-                        </TextBox>
-                    </div>
-                    <div className="dx-field">
-                        <Button style="float: right;" text="Login" onClick={this.loginClick.bind(this)}></Button>
-                    </div>
-                </ValidationGroup>
-            </React.Fragment>
+            <ValidationGroup className='dx-fieldset'>
+                <div className='dx-field'>
+                    <TextBox value={this.state.login} placeholder='Login' onValueChanged={this.loginChange.bind(this)}>
+                        <Validator validationRules={this.validationRules.login} />
+                    </TextBox>
+                </div>
+                <div className='dx-field'>
+                    <TextBox mode='password' value={this.state.password} placeholder='Password' onValueChanged={this.passwordChange.bind(this)}>
+                        <Validator validationRules={this.validationRules.password} />
+                    </TextBox>
+                </div>
+                <div className='dx-field'>
+                    <Button style='float: right;' text='Login' onClick={this.loginClick.bind(this)}></Button>
+                </div>
+            </ValidationGroup>
         );
     }
 }

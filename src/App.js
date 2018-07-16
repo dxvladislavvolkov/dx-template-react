@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
-import "devextreme/dist/css/dx.common.css";
-import "devextreme/dist/css/dx.light.compact.css";
+import 'devextreme/dist/css/dx.common.css';
+import 'devextreme/dist/css/dx.light.compact.css';
 
-import { SlideOutView } from "devextreme-react/ui/slide-out-view";
+import { SlideOutView } from 'devextreme-react/ui/slide-out-view';
 
-import NavigationMenu from "./components/NavigationMenu";
-import PageContent from "./components/PageContent"
+import NavigationMenu from './components/NavigationMenu';
+import PageContent from './components/PageContent'
 
 class App extends Component {
     constructor(props) {
@@ -22,14 +22,14 @@ class App extends Component {
 
     render() {
         return (
-        <div className="App">
+        <div className='App'>
             <Router>
-                <SlideOutView class="slide-layout"
+                <SlideOutView class='slide-layout'
                     swipeEnabled={true}
                     menuVisible={this.state.menuVisible}
-                    menuRender={() => <NavigationMenu />}
-                    contentRender={() => <PageContent />}
-                    onOptionChanged={(args) => args.name === "menuVisible" && this.setState({ menuVisible: args.value })}
+                    menuComponent={NavigationMenu}
+                    contentComponent={PageContent}
+                    onOptionChanged={(args) => args.name === 'menuVisible' && this.setState({ menuVisible: args.value })}
                 ></SlideOutView>
             </Router>
         </div>
