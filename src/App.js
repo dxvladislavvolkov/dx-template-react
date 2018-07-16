@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
@@ -10,7 +10,7 @@ import { SlideOutView } from 'devextreme-react/ui/slide-out-view';
 import NavigationMenu from './components/NavigationMenu';
 import PageContent from './components/PageContent'
 
-class App extends Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

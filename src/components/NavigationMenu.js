@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Template } from 'devextreme-react/core/template';
 
@@ -7,7 +7,7 @@ import { TreeView } from 'devextreme-react/ui/tree-view';
 
 import { withRouter } from 'react-router-dom';
 
-class NavigationMenu extends Component {
+class NavigationMenu extends React.Component {
     items = [{ 
         location: 'before',
         locateInMenu: 'auto',
@@ -51,8 +51,8 @@ class NavigationMenu extends Component {
                     items={this.menuItems}
                     onItemClick={this.onItemSelectionChanged.bind(this)}
                     selectByClick={true}
-                    selectionMode='single'
-                ></TreeView>
+                    selectionMode='single'>
+                </TreeView>
             </div>
         );
     }

@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Button } from 'devextreme-react/ui/button';
 import { ValidationGroup } from 'devextreme-react/ui/validation-group';
 import { Validator } from 'devextreme-react/ui/validator';
 import { TextBox } from 'devextreme-react/ui/text-box';
 
-class Login  extends Component {
-
+class Login  extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

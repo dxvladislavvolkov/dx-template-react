@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Template } from 'devextreme-react/core/template';
 
@@ -7,8 +7,7 @@ import { Popup } from 'devextreme-react/ui/popup';
 
 import Login from './Login'
 
-class Header extends Component {
-
+class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -66,8 +65,8 @@ class Header extends Component {
                     height='auto'
                     width='300'
                     contentRender={() => <Login onUserAuthorized={this.onUserAuthorized.bind(this)} />}
-                    onHiding={() => { this.setState({ showLoginPopup: false }); }}
-                ></Popup>
+                    onHiding={() => { this.setState({ showLoginPopup: false }); }}>
+                </Popup>
             </div>
         );
     }

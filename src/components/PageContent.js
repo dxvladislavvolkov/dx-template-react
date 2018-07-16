@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import Header from './Header';
 
@@ -6,7 +6,7 @@ import Profile from '../views/Profile';
 import Settings from '../views/Settings';
 import About from '../views/About';
 
-class PageContent  extends Component {
+class PageContent extends React.Component {
     render() {
         return (
             <div>
