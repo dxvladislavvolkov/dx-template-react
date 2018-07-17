@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 import './App.css';
 
 import 'devextreme/dist/css/dx.common.css';
@@ -9,6 +9,8 @@ import { SlideOutView } from 'devextreme-react/ui/slide-out-view';
 
 import NavigationMenu from './components/NavigationMenu';
 import PageContent from './components/PageContent'
+
+const SlideOutViewWithRouter = withRouter(SlideOutView);
 
 class App extends React.Component {
     constructor(props) {
@@ -24,13 +26,13 @@ class App extends React.Component {
         return (
         <div className='App'>
             <Router>
-                <SlideOutView class='slide-layout'
+                <SlideOutViewWithRouter class='slide-layout'
                     swipeEnabled={true}
                     menuVisible={this.state.menuVisible}
                     menuComponent={NavigationMenu}
                     contentComponent={PageContent}
                     onOptionChanged={(args) => args.name === 'menuVisible' && this.setState({ menuVisible: args.value })}
-                ></SlideOutView>
+                ></SlideOutViewWithRouter>
             </Router>
         </div>
         );

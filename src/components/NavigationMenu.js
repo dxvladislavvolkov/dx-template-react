@@ -5,8 +5,6 @@ import { Template } from 'devextreme-react/core/template';
 import { Toolbar } from 'devextreme-react/ui/toolbar';
 import { TreeView } from 'devextreme-react/ui/tree-view';
 
-import { withRouter } from 'react-router-dom';
-
 class NavigationMenu extends React.Component {
     items = [{ 
         location: 'before',
@@ -58,4 +56,4 @@ class NavigationMenu extends React.Component {
     }
 }
 
-export default withRouter(NavigationMenu);
+export default NavigationMenu;
