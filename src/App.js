@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
 import 'devextreme/dist/css/dx.common.css';
-import 'devextreme/dist/css/dx.light.compact.css';
+import 'devextreme/dist/css/dx.material.blue.light.css';
 
 import { SlideOutView } from 'devextreme-react/ui/slide-out-view';
 
